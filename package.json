@@ -1,0 +1,22 @@
+﻿{
+  "author": "",
+  "description": "",
+  "devDependencies": {
+    "@playwright/test": "^1.51.1",
+    "@types/node": "^22.13.14",
+    "eslint": "^9.24.0"
+  },
+  "keywords": [],
+  "license": "ISC",
+  "main": "index.js",
+  "name": "playwright",
+  "scripts": {
+    "test": "npx playwright test",
+    "testUI": "npx playwright test --ui",
+    "codegen": "npx playwright codegen"
+  },
+  "version": "1.0.0",
+  "dependencies": {
+    "@faker-js/faker": "^9.8.0"
+  }
+}
