@@ -19,6 +19,7 @@ test('Выход из учетной записи юзера', async ({ page }) 
     
     await app.navigation.clickProfileButton();
     await expect(page.getByRole('link', { name: 'Logout' })).toBeVisible();
+    await app.navigation.clickProfileButton();
     await app.navigation.clickLogoutButton();
     await expect(page.getByRole('link', { name: 'Login' })).toBeVisible();
     await expect(page.getByRole('link', { name: ' Sign up' })).toBeVisible();
