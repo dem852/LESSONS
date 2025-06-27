@@ -14,7 +14,7 @@
     
     async clickSettingsButton() {
         await this.profileButton.click()
-        await this.settngsButton.click()
+        await this.settingsButton.click()
         
     }
     

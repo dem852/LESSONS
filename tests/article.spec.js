@@ -1,5 +1,5 @@
-﻿    import { test, expect } from '@playwright/test';
-//import { MainPage, RegisterPage, YourFeedPage, GlobalFeedPage } from '../src/pages/index';
+﻿import { test, expect } from '@playwright/test';
+
 import { UserBuilder } from '../src/helpers/user.builders';
 import { ArticleBuilder } from '../src/helpers/article.builders';
 import { App } from '../src/pages/app.page'

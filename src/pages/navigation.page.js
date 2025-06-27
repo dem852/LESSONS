@@ -10,6 +10,7 @@
         this.profileButton = page.locator('.dropdown-toggle');
         this.logoutButton = page.getByRole('link', { name: ' Logout' });
         this.newArticleButton = page.getByRole('button', { name: 'New Article' });
+        this.clickSettingsButton = page.getByRole('button', { name: ' Settings' });
     }
 
 
@@ -37,11 +38,7 @@
         await this.profileButton.click()
         await this.logoutButton.click()
     }
-    async clickSettingsButton() {
-        await this.profileButton.click()
-        await this.settngsButton.click()
-    }
-
+   
     async clickNewArticleButton() {
         this.newArticleButton.click()
     }
