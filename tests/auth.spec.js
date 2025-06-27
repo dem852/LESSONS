@@ -1,6 +1,10 @@
 ﻿import { test, expect } from '@playwright/test';
 import { UserBuilder } from '../src/helpers/user.builders';
 import { App } from '../src/pages/app.page'
+import { visioLogout } from '../src/pages/myPage'
+import { visioLogin } from '../src/pages/myPage'
+import { visioSignUp } from '../src/pages/myPage'
+
 
 test('Выход из учетной записи юзера', async ({ page }) => {
     const randomUser = new UserBuilder()
@@ -15,11 +19,17 @@ test('Выход из учетной записи юзера', async ({ page }) 
     await app.register.signUp(randomUser);
     await expect(app.yourFeed.profileNameField).toContainText(randomUser.username);
 
-    
+
     await app.navigation.clickProfileButton();
-    await expect(page.getByRole('link', { name: 'Logout' })).toBeVisible();
+    const buttonLogout = new visioLogout(page);
+    await expect(buttonLogout.visualButtonLogout()).toBeVisible();
+
     await app.navigation.clickProfileButton();
     await app.navigation.clickLogoutButton();
-    await expect(page.getByRole('link', { name: 'Login' })).toBeVisible();
-    await expect(page.getByRole('link', { name: ' Sign up' })).toBeVisible();
-})
+
+    const buttonLogin = new visioLogin(page);
+    await expect(buttonLogin.visualButtonLogin()).toBeVisible();
+
+    const buttonSignUp = new visioSignUp(page);
+    await expect(buttonSignUp.visualButtonSignUp()).toBeVisible();
+})   

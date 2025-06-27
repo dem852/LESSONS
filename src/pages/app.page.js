@@ -1,4 +1,4 @@
-import { MainPage, RegisterPage, GlobalFeedPage, NavigationPage, NewArticlePage, YourFeedPage, YourSettingsPage } from './index';
+﻿import { MainPage, RegisterPage, GlobalFeedPage, NavigationPage, NewArticlePage, YourFeedPage, YourSettingsPage } from './index';
 
 export class App {
 	constructor(page) {
@@ -9,6 +9,6 @@ export class App {
         this.globalFeed = new GlobalFeedPage(page);
         this.navigation = new NavigationPage(page);
         this.newArticle = new NewArticlePage(page);
-        this.yourSettings = new YourSettingsPage(page);
+		this.yourSettings = new YourSettingsPage(page);
 	}
 }

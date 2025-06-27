@@ -3,7 +3,11 @@
 import { UserBuilder } from '../src/helpers/user.builders';
 import { ArticleBuilder } from '../src/helpers/article.builders';
 import { App } from '../src/pages/app.page'
-
+import { visioArticle } from '../src/pages/myPage'
+import { Comments } from '../src/pages/myPage'
+import { oneLike } from '../src/pages/myPage'
+import { buttonGlobal } from '../src/pages/myPage'
+import { filterTag } from '../src/pages/myPage'
 
 
 test('Создание статьи авторизованным пользователем', async ({page}) => {
@@ -29,8 +33,11 @@ test('Создание статьи авторизованным пользов�
 
     await app.newArticle.open();
     await app.newArticle.newArticle(randomArticle);
-    await expect(page.getByRole('button', { name: ' Edit Article' }).first()).toBeVisible();
-    await expect(page.getByRole('button', { name: 'Post Comment' }).first()).toBeVisible();
+    const visibleItem = new visioArticle(page);
+    await expect(visibleItem.visualButton()).toBeVisible();
+    const usercomment = new Comments(page);
+    await expect(usercomment.visualcommentButton()).toBeVisible();
+
 })
 
 
@@ -59,8 +66,11 @@ test('Проставить лайк статье из раздела Global Feed
     await app.main.open();
     await app.globalFeed.open();
     await app.globalFeed.likePost();
-    await expect(page.getByRole('button', { name: '( 1 )' })).toBeVisible();
-    await expect(page.getByRole('button', { name: '  Global Feed' }).first()).toBeVisible();
+    const visualLike = new oneLike(page);
+    await expect(visualLike.visualtabLike()).toBeVisible();
+    const tab = new buttonGlobal(page);
+    await expect(tab.visualtabButton()).toBeVisible();
+    
 })
 
 test('Фильтрация статей по популярному тэгу', async ({page}) => {
@@ -68,5 +78,7 @@ test('Фильтрация статей по популярному тэгу', a
     
     await app.main.open();
     await app.main.popularTagButtonClick();
-    await expect(page.getByRole('button', { name: 'clamo' }).first()).toBeVisible();
+    const nameTag = new filterTag(page);
+    await expect(nameTag.visualButton()).toBeVisible();
+    
 })

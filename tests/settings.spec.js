@@ -1,6 +1,8 @@
 ﻿import { test, expect } from '@playwright/test';
 import { UserBuilder } from '../src/helpers/user.builders';
 import { App } from '../src/pages/app.page'
+import { visioSettings } from '../src/pages/myPage'
+
 
 test('Смена имени пользователя', async ({ page }) => {
 
@@ -19,8 +21,11 @@ test('Смена имени пользователя', async ({ page }) => {
 
    
     await app.yourSettings.clickSettingsButton();
-    await expect(page.getByRole('link', { name: ' Settings' })).toBeVisible();
+
+    const buttonSettings = new visioSettings(page);
+    await expect(buttonSettings.visualButtonSettings()).toBeVisible();
+
     await app.yourSettings.changeUserName(randomUser);
     await expect(page.getByRole('navigation')).toContainText(randomUser.username);
-    
+
 })
