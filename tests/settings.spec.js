@@ -25,7 +25,8 @@ test('Смена имени пользователя', async ({ page }) => {
     const buttonSettings = new visioSettings(page);
     await expect(buttonSettings.visualButtonSettings()).toBeVisible();
 
+   
     await app.yourSettings.changeUserName(randomUser);
-    await expect(page.getByRole('navigation')).toContainText(randomUser.username);
-
+    await expect(app.yourFeed.profileNameField).toContainText(randomUser.username);
+   
 })
